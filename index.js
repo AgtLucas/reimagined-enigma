@@ -15,3 +15,22 @@ export function zip (value) {
       break
   }
 }
+
+export function date (value) {
+  if (!value) {
+    return value
+  }
+
+  const num = value.replace(/[^\d]/g, '')
+
+  switch (true) {
+    case (num.length === 1 || num.length === 2):
+      return `${num}`
+
+    case ((num.length >= 3) && (num.length <= 4)):
+      return `${num.slice(0, 2)}/${num.slice(2)}`
+
+    case (num.length >= 5):
+      return `${num.slice(0, 2)}/${num.slice(2, 4)}/${num.slice(4, 8)}`
+  }
+}
